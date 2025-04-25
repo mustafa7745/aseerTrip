@@ -1,0 +1,246 @@
+<!-- app.component.html -->
+<div class="asir-tourism-platform">
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <h1 style="font-size: 15px">اكتشف عسير</h1>
+          <p>الوجهة السياحية المثالية</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <!-- <ul class="nav-links" >
+          <li><a href="#tours">الرحلات</a></li>
+          <li><a href="#events">الفعاليات</a></li>
+          <li><a href="#attractions">المعالم</a></li>
+          <li><a href="#guides">المرشدين</a></li>
+          <li><a href="#tips">نصائح السفر</a></li>
+        </ul> -->
+
+        <!-- Auth Buttons -->
+
+        <div class="auth-buttons" *ngIf="!user">
+          <button
+            class="btn btn-outline"
+            style="margin: 5px"
+            (click)="goToLogin()"
+          >
+            تسجيل الدخول
+          </button>
+          <button class="btn btn-primary" style="margin: 5px">
+            إنشاء حساب
+          </button>
+        </div>
+        <div *ngIf="user">
+            <!-- User icon with name -->
+            <div class="user-info">
+              <span style="margin-left: 10px; font-weight: bold;">{{ user || 'مستخدم' }}!</span>
+              <i class="fas fa-user-circle" style="font-size: 20px; color: rgb(63, 80, 80);"></i>  <!-- User icon -->
+
+            </div>
+          </div>
+      </nav>
+    </div>
+    <hr />
+    <div class="rectangle-nav">
+      <a href="#tours" class="rectangle-item">الرحلات</a>
+      <a href="#events" class="rectangle-item">الفعاليات</a>
+      <a href="#attractions" class="rectangle-item">المعالم</a>
+      <a href="#guides" class="rectangle-item">المرشدين</a>
+      <a href="#tips" class="rectangle-item">نصائح السفر</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>استكشف جمال عسير</h1>
+      <p>منطقة تجمع بين روعة الطبيعة وأصالة التراث</p>
+      <!-- <button class="hero-button">ابدأ الرحلة</button> -->
+    </div>
+  </section>
+
+  <!-- Tours Section -->
+  <section id="tours" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>الرحلات السياحية</h2>
+        <a href="/tours" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a>
+      </div>
+      <div class="tours-grid">
+        <div class="tour-card" *ngFor="let tour of featuredTours">
+          <div
+            class="tour-image"
+            [style.backgroundImage]="'url(' + tour.image + ')'"
+          >
+            <span class="tour-price">{{ tour.price }} ر.س</span>
+          </div>
+          <div class="tour-info">
+            <h3>{{ tour.title }}</h3>
+            <div class="tour-meta">
+              <span><i class="far fa-clock"></i> {{ tour.duration }}</span>
+              <span
+                ><i class="fas fa-map-marker-alt"></i> {{ tour.location }}</span
+              >
+            </div>
+            <button class="btn btn-outline">تفاصيل الرحلة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>الفعاليات القادمة</h2>
+        <a href="/events" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a>
+      </div>
+      <div class="events-list">
+        <div class="event-card" *ngFor="let event of upcomingEvents">
+          <div class="event-date">
+            <span class="day">{{ event.date | date : "d" }}</span>
+            <span class="month">{{ event.date | date : "MMM" }}</span>
+          </div>
+          <div class="event-details">
+            <h3>{{ event.title }}</h3>
+            <p>{{ event.description }}</p>
+            <div class="event-location">
+              <i class="fas fa-map-marker-alt"></i> {{ event.location }}
+            </div>
+          </div>
+          <button class="btn btn-primary">احجز مقعدك</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Attractions Section -->
+  <section id="attractions" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>أبرز المعالم السياحية</h2>
+        <a href="/attractions" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a>
+      </div>
+      <div class="attractions-grid">
+        <div class="attraction-card" *ngFor="let attraction of topAttractions">
+          <img [src]="attraction.image" [alt]="attraction.name" />
+          <div class="attraction-overlay">
+            <h3>{{ attraction.name }}</h3>
+            <div class="rating">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+              <span>({{ attraction.reviews }})</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guides Section -->
+  <section id="guides" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>المرشدون السياحيون</h2>
+        <a href="/guides" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a>
+      </div>
+      <div class="guides-list">
+        <div class="guide-card" *ngFor="let guide of featuredGuides">
+          <div class="guide-avatar">
+            <img [src]="guide.avatar" [alt]="guide.name" />
+          </div>
+          <div class="guide-info">
+            <h3>{{ guide.name }}</h3>
+            <div class="languages">
+              <span *ngFor="let lang of guide.languages">{{ lang }}</span>
+            </div>
+            <div class="rating">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+              <span>{{ guide.rating }}/5</span>
+            </div>
+          </div>
+          <button class="btn btn-outline">احجز مرشدك</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips Section -->
+  <section id="tips" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>نصائح السفر إلى عسير</h2>
+        <a href="/tips" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card" *ngFor="let tip of travelTips">
+          <div class="tip-icon">
+            <i [class]="'fas ' + tip.icon"></i>
+          </div>
+          <h3>{{ tip.title }}</h3>
+          <p>{{ tip.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>اشترك في نشرتنا البريدية</h2>
+      <p>احصل على آخر العروض والفعاليات مباشرة إلى بريدك</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="بريدك الإلكتروني" />
+        <button class="btn btn-primary">اشتراك</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>اكتشف عسير</h3>
+          <p>منصة سياحية متكاملة تقدم أفضل التجارب في منطقة عسير</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">عن عسير</a></li>
+            <li><a href="#">الرحلات</a></li>
+            <li><a href="#">الفعاليات</a></li>
+            <li><a href="#">اتصل بنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>تواصل معنا</h4>
+          <p><i class="fas fa-map-marker-alt"></i> أبها، منطقة عسير</p>
+          <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+          <p><i class="fas fa-envelope"></i> infodiscoverasir.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023 اكتشف عسير. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+</div>
