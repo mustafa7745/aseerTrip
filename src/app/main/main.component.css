@@ -517,6 +517,7 @@ p,h1 {
 }
 
 .section-header {
+  direction: rtl;
   display: flex;
   justify-content: space-between;
   align-items: center;
