@@ -13,7 +13,7 @@ import { Router } from 'express';
   providedIn: 'root',
 })
 export class SupabaseService {
-  private supabase: SupabaseClient;
+  supabase: SupabaseClient;
 
   constructor() {
     this.supabase = createClient(environment.apiUrl, environment.apiKey, {
@@ -34,16 +34,32 @@ export class SupabaseService {
     });
   }
 
-  async resetPassword(email: string) {
-    return this.supabase.auth.resetPasswordForEmail(email);
+  async logout() {
+    const { error } = await this.supabase.auth.signOut();
+    if (error) {
+      console.error('Logout error:', error.message);
+      return false;
+    } else {
+      console.log('Logged out successfully');
+      return true;
+    }
   }
 
+  async register() {
+    return this.supabase.auth;
+  }
+  async resetPassword(email: string) {
+    return this.supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'http://localhost:4200/update-password',
+    });
+  }
   getSession() {
-    return this.supabase.auth.getSession()
+    return this.supabase.auth.getSession();
   }
 
   hasSession(): Promise<boolean> {
-    return this.supabase.auth.getSession()
+    return this.supabase.auth
+      .getSession()
       .then(({ data }) => !!data.session?.user)
       .catch(() => false);
   }

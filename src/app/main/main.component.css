@@ -537,6 +537,7 @@ p,h1 {
   padding-bottom: 5px;
 }
 
+
 .section-header h2::after {
   content: "";
   position: absolute;
@@ -634,5 +635,52 @@ p,h1 {
     .auth-buttons{
        text-align: center;
     }
+  }
+  
+
+  .transport-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    direction: rtl; /* لأن المحتوى باللغة العربية */
+  }
+  
+  .section-header h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 28px;
+  }
+  
+  .transport-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .transport-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .transport-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .transport-card h3 {
+    color: #007B8F;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+  
+  .transport-card p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
   }
   

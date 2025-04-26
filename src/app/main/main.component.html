@@ -1,4 +1,9 @@
 <!-- app.component.html -->
+
+<div class="overlay" *ngIf="loading">
+  <div class="spinner"></div>
+</div>
+
 <div class="asir-tourism-platform">
   <!-- Header Section -->
   <header class="header">
@@ -28,27 +33,55 @@
           >
             تسجيل الدخول
           </button>
-          <button class="btn btn-primary" style="margin: 5px">
+          <button
+            (click)="goToSignUp()"
+            class="btn btn-primary"
+            style="margin: 5px"
+          >
             إنشاء حساب
           </button>
         </div>
         <div *ngIf="user">
-            <!-- User icon with name -->
-            <div class="user-info">
-              <span style="margin-left: 10px; font-weight: bold;">{{ user || 'مستخدم' }}!</span>
-              <i class="fas fa-user-circle" style="font-size: 20px; color: rgb(63, 80, 80);"></i>  <!-- User icon -->
-
-            </div>
+          <!-- User icon with name -->
+          <div
+            class="logout-button"
+            (click)="logout()"
+            style="cursor: pointer; display: flex; align-items: center"
+          >
+            <span
+              style="
+                color: rgb(255, 15, 15);
+                font-weight: 500;
+                margin: 10px;
+                font-family: Tajawal, sans-serif;
+              "
+              >تسجيل الخروج</span
+            >
+            <i
+              class="fas fa-sign-out-alt"
+              style="font-size: 20px; color: rgb(254, 9, 9); margin-right: 5px"
+            ></i>
           </div>
+          <hr />
+          <div class="user-info">
+            <span style="margin-left: 10px; font-weight: bold"
+              >{{ user || "مستخدم" }}!</span
+            >
+            <i
+              class="fas fa-user-circle"
+              style="font-size: 20px; color: rgb(63, 80, 80)"
+            ></i>
+            <!-- User icon -->
+          </div>
+        </div>
       </nav>
     </div>
     <hr />
-    <div class="rectangle-nav">
+    <div class="rectangle-nav" style="direction: rtl">
       <a href="#tours" class="rectangle-item">الرحلات</a>
       <a href="#events" class="rectangle-item">الفعاليات</a>
       <a href="#attractions" class="rectangle-item">المعالم</a>
       <a href="#guides" class="rectangle-item">المرشدين</a>
-      <a href="#tips" class="rectangle-item">نصائح السفر</a>
     </div>
   </header>
 
@@ -176,13 +209,52 @@
   </section>
 
   <!-- Travel Tips Section -->
+  <section id="tips" class="section transport-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>وسائل النقل المتاحة في عسير</h2>
+      </div>
+      <div class="transport-options">
+        <div class="transport-card">
+          <h3>سيارات الأجرة</h3>
+          <p>
+            تتوفر سيارات الأجرة التقليدية في المدن الكبرى مثل أبها وخميس مشيط،
+            ويمكن طلبها عبر التطبيقات مثل كريم وأوبر.
+          </p>
+        </div>
+        <div class="transport-card">
+          <h3>الحافلات</h3>
+          <p>
+            توجد خدمات الحافلات العامة التي تربط بين المدن والقرى، وهي وسيلة
+            اقتصادية للتنقل.
+          </p>
+        </div>
+        <div class="transport-card">
+          <h3>السيارات الخاصة</h3>
+          <p>
+            يمكنك استئجار سيارة من خلال الشركات المحلية أو الدولية، وتُعتبر
+            مثالية لاستكشاف المناطق الجبلية.
+          </p>
+        </div>
+        <!-- <div class="transport-card">
+          <h3>النقل الجوي الداخلي</h3>
+          <p>
+            يوجد مطار أبها الإقليمي الذي يربط المنطقة بالمدن السعودية الكبرى،
+            ويُعد خيارًا سريعًا للتنقل بين المناطق.
+          </p>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips Section -->
   <section id="tips" class="section">
     <div class="container">
       <div class="section-header">
-        <h2>نصائح السفر إلى عسير</h2>
-        <a href="/tips" class="view-all"
+        <h2>نصائح السفر</h2>
+        <!-- <a href="/tips" class="view-all"
           >عرض الكل <i class="fas fa-arrow-left"></i
-        ></a>
+        ></a> -->
       </div>
       <div class="tips-grid">
         <div class="tip-card" *ngFor="let tip of travelTips">

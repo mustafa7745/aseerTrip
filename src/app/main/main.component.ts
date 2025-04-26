@@ -11,16 +11,27 @@ import { SupabaseService } from '../supabase.service';
   styleUrl: './main.component.css',
 })
 export class MainComponent {
-  user: any;
+  loading: any;
+  async logout() {
+    // throw new Error('Method not implemented.');
+
+    this.loading = true;
+    if (await this.supabase.logout()) {
+      this.user = null;
+      // this.router.navigate(['/login']);
+    }
+    this.loading = false;
+  }
+  user: any = null;
   constructor(private supabase: SupabaseService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
-    const a =await this.supabase.getSession()
+    const a = await this.supabase.getSession();
     if (a) {
       this.user = a.data.session?.user.email?.split('@')[0];
     }
     console.log(a);
-    
+
     // .then(({ data:an }) => !!data.session?.user)
     // .catch(() => false);
     // this.supabase.getSession().subscribe(session => {
@@ -38,6 +49,10 @@ export class MainComponent {
   goToLogin() {
     this.router.navigate(['/login']);
   }
+
+  goToSignUp() {
+    this.router.navigate(['/signup']);
+  }
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
@@ -45,21 +60,24 @@ export class MainComponent {
   featuredTours = [
     {
       title: 'رحلة إلى جبل السودة',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/mahael.jpeg',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/mahael.jpeg',
       price: 250,
       duration: 'يوم كامل',
       location: 'أبها',
     },
     {
       title: 'جولة في قرية رجال ألمع التراثية',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/men.webp',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/men.webp',
       price: 180,
       duration: 'نصف يوم',
       location: 'رجال ألمع',
     },
     {
       title: 'مغامرة في متنزه السحاب',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/cloud.webp',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/tours/cloud.webp',
       price: 320,
       duration: 'يوم كامل',
       location: 'أبها',
@@ -84,17 +102,20 @@ export class MainComponent {
   topAttractions = [
     {
       name: 'قرية المفتاحة',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/13_NXYauRO.jpg',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/13_NXYauRO.jpg',
       reviews: 124,
     },
     {
       name: 'منتزه دلغان',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/Dalagan-Park-Asir.png',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/Dalagan-Park-Asir.png',
       reviews: 89,
     },
     {
       name: 'قصر شدا الأثري',
-      image: 'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/shada.jpg',
+      image:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/attractions/shada.jpg',
       reviews: 76,
     },
   ];
@@ -102,13 +123,15 @@ export class MainComponent {
   featuredGuides = [
     {
       name: 'أحمد السلمي',
-      avatar: 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
+      avatar:
+        'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
       languages: ['العربية', 'الإنجليزية'],
       rating: 4.8,
     },
     {
       name: 'محمد القحطاني',
-      avatar: 'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
+      avatar:
+        'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
       languages: ['العربية', 'الفرنسية'],
       rating: 4.9,
     },

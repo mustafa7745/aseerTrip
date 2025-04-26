@@ -20,6 +20,6 @@ export class AppComponent {
   constructor(private supabase: SupabaseService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
-    this.router.navigate(['/main']);
+    this.router.navigate(['/login']);
   }
 }
