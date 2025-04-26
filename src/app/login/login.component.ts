@@ -16,7 +16,7 @@ export class LoginComponent {
     this.router.navigate(['/signup']);
   }
   goToMain() {
-    this.router.navigate(['/main']);
+    // this.router.navigate(['/main']);
   }
   email: string = '';
   password: string = '';
