@@ -92,3 +92,46 @@ body {
     transition: background-color 0.3s;
     margin-top: 0.5rem;
   }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .btn-outline {
+    background-color: transparent;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+  }
+  
+  .btn-outline:hover {
+    background-color: #007BFF;
+    color: white;
+  }
+  
+  /* تنسيق وسائل التواصل */
+  .contact-info {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    font-size: 16px;
+  }
+  
+  .contact-info li {
+    margin-bottom: 8px;
+  }
+  
+  .contact-info a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  

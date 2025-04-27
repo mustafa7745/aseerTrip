@@ -21,9 +21,25 @@
   
     <h3>الخبرات</h3>
     <p>{{ travelGuideInfo.experience }}</p>
+  
+    <!-- قسم وسائل التواصل -->
+    <h3>وسائل التواصل</h3>
+    <ul class="contact-info">
+      <li><strong>📞 الهاتف:</strong> {{ travelGuideInfo.contact.phone }}</li>
+      <li><strong>✉️ البريد الإلكتروني:</strong> {{ travelGuideInfo.contact.email }}</li>
+      <li>
+        <strong>📸 إنستغرام:</strong>
+        <a [href]="travelGuideInfo.contact.instagram" target="_blank">عرض الحساب</a>
+      </li>
+      <li>
+        <strong>💬 واتساب:</strong>
+        <a [href]="travelGuideInfo.contact.whatsapp" target="_blank">بدء محادثة</a>
+      </li>
+    </ul>
+  
+    <!-- زر الحجز -->
+    <button class="btn btn-outline">احجز الآن</button>
   </div>
   
   <hr>
-
-  <button class="btn btn-outline" >احجز الان</button>
   
