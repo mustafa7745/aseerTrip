@@ -138,6 +138,14 @@ export class MainComponent {
       rating: 5,
     },
     {
+      id: 1,
+      name: 'مهند سعيد',
+      avatar:
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/guider/mohaned.png',
+      languages: ['العربية', 'الإنجليزية'],
+      rating: 4.8,
+    },
+    {
       id: 2,
 
       name: 'علي سعد',
