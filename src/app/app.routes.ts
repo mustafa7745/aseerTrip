@@ -7,7 +7,7 @@ import { GuideInfoComponent } from './guide-info/guide-info.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: RegisterComponent },
+  // { path: 'signup', component: RegisterComponent },
   { path: 'main', component: MainComponent },
   { path: 'update-password', component: UpdatePasswordComponent },
   { path: 'guide-info', component: GuideInfoComponent },
