@@ -5,31 +5,81 @@
 </div>
 
 <div class="asir-tourism-platform">
-
-
-  <!-- Attractions Section -->
-  <section id="attractions" class="section">
+  <!-- Header Section -->
+  <header class="header">
     <div class="container">
-      <div class="section-header">
-        <h2>أبرز المعالم السياحية</h2>
-        <!-- <a href="/attractions" class="view-all"
-          >عرض الكل <i class="fas fa-arrow-left"></i
-        ></a> -->
-      </div>
-      <div class="attractions-grid">
-        <div class="attraction-card" *ngFor="let attraction of topAttractions">
-          <img [src]="attraction.image" [alt]="attraction.name" />
-          <div class="attraction-overlay">
-            <h3>{{ attraction.name }}</h3>
-            <div class="rating">
-              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
-              <span>({{ attraction.reviews }})</span>
-            </div>
+      <nav class="navbar">
+        <div class="logo">
+          <h1 style="font-size: 15px">اكتشف عسير</h1>
+          <p>الوجهة السياحية المثالية</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <!-- <ul class="nav-links" >
+          <li><a href="#tours">الرحلات</a></li>
+          <li><a href="#events">الفعاليات</a></li>
+          <li><a href="#attractions">المعالم</a></li>
+          <li><a href="#guides">المرشدين</a></li>
+          <li><a href="#tips">نصائح السفر</a></li>
+        </ul> -->
+
+        <!-- Auth Buttons -->
+
+        <div class="auth-buttons" *ngIf="!user">
+          <button
+            class="btn btn-outline"
+            style="margin: 5px"
+            (click)="goToLogin()"
+          >
+            تسجيل الدخول
+          </button>
+          <button
+            (click)="goToSignUp()"
+            class="btn btn-primary"
+            style="margin: 5px"
+          >
+            إنشاء حساب
+          </button>
+        </div>
+        <div *ngIf="user">
+          <!-- User icon with name -->
+          <div
+            class="logout-button"
+            (click)="logout()"
+            style="cursor: pointer; display: flex; align-items: center"
+          >
+            <span
+              style="
+                color: rgb(255, 15, 15);
+                font-weight: 500;
+                margin: 10px;
+                font-family: Tajawal, sans-serif;
+              "
+              >تسجيل الخروج</span
+            >
+            <i
+              class="fas fa-sign-out-alt"
+              style="font-size: 20px; color: rgb(254, 9, 9); margin-right: 5px"
+            ></i>
+          </div>
+          <hr />
+          <div class="user-info">
+            <span style="margin-left: 10px; font-weight: bold"
+              >{{ user || "مستخدم" }}!</span
+            >
+            <i
+              class="fas fa-user-circle"
+              style="font-size: 20px; color: rgb(63, 80, 80)"
+            ></i>
+            <!-- User icon -->
           </div>
         </div>
-      </div>
+      </nav>
     </div>
-  </section>
+    <hr />
+  </header>
+
+ 
 
   <!-- Guides Section -->
   <section id="guides" class="section bg-light">

@@ -201,3 +201,28 @@
     </div>
   </div>
 </section>
+
+
+ <!-- Attractions Section -->
+ <section id="attractions" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2>أبرز المعالم السياحية</h2>
+      <!-- <a href="/attractions" class="view-all"
+        >عرض الكل <i class="fas fa-arrow-left"></i
+      ></a> -->
+    </div>
+    <div class="attractions-grid">
+      <div class="attraction-card" *ngFor="let attraction of topAttractions">
+        <img [src]="attraction.image" [alt]="attraction.name" />
+        <div class="attraction-overlay">
+          <h3>{{ attraction.name }}</h3>
+          <div class="rating">
+            <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+            <span>({{ attraction.reviews }})</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
