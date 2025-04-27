@@ -32,6 +32,10 @@ export class MainComponent {
     }
     console.log(a);
 
+    const dates = await this.supabase.getDatesFromTable('guides');
+    console.log(dates);
+    
+
     // .then(({ data:an }) => !!data.session?.user)
     // .catch(() => false);
     // this.supabase.getSession().subscribe(session => {
@@ -130,6 +134,13 @@ export class MainComponent {
     },
     {
       name: 'محمد القحطاني',
+      avatar:
+        'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
+      languages: ['العربية', 'الفرنسية'],
+      rating: 4.9,
+    },
+    {
+      name: 'مهند أبو عجمه',
       avatar:
         'https://static.vecteezy.com/system/resources/thumbnails/005/346/410/small_2x/close-up-portrait-of-smiling-handsome-young-caucasian-man-face-looking-at-camera-on-isolated-light-gray-studio-background-photo.jpg',
       languages: ['العربية', 'الفرنسية'],

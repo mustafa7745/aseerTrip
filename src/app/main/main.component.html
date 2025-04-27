@@ -81,6 +81,37 @@
   </header>
 
 
+  
+<!-- Guides Section -->
+<section id="guides" class="section bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>المرشدون السياحيون</h2>
+      <!-- <a href="/guides" class="view-all"
+        >عرض الكل <i class="fas fa-arrow-left"></i
+      ></a> -->
+    </div>
+    <div class="guides-list">
+      <div class="guide-card" *ngFor="let guide of featuredGuides">
+        <div class="guide-avatar">
+          <img [src]="guide.avatar" [alt]="guide.name" />
+        </div>
+        <div class="guide-info">
+          <h3>{{ guide.name }}</h3>
+          <div class="languages">
+            <span *ngFor="let lang of guide.languages">{{ lang }}</span>
+          </div>
+          <div class="rating">
+            <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+            <span>{{ guide.rating }}/5</span>
+          </div>
+        </div>
+        <button class="btn btn-outline">احجز مرشدك</button>
+      </div>
+    </div>
+  </div>
+</section>
+
   <!-- Travel Tips Section -->
   <section id="tips" class="section transport-section">
     <div class="container">
@@ -171,8 +202,8 @@
           <ul>
             <li><a href="#">الرئيسية</a></li>
             <li><a href="#">عن عسير</a></li>
-            <li><a href="#">الرحلات</a></li>
-            <li><a href="#">الفعاليات</a></li>
+            <!-- <li><a href="#">الرحلات</a></li>
+            <li><a href="#">الفعاليات</a></li> -->
             <li><a href="#">اتصل بنا</a></li>
           </ul>
         </div>

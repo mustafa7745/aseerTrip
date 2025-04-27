@@ -34,6 +34,17 @@ export class SupabaseService {
     });
   }
 
+  async getDatesFromTable(table: string) {
+    const { data, error } = await this.supabase.from(table).select('*'); // selects all columns
+
+    if (error) {
+      console.error('Error fetching data:', error);
+      return [];
+    }
+
+    return data;
+  }
+
   async logout() {
     const { error } = await this.supabase.auth.signOut();
     if (error) {
@@ -52,7 +63,6 @@ export class SupabaseService {
     return this.supabase.auth.resetPasswordForEmail(email, {
       redirectTo: 'https://aseer-trip.vercel.app/update-password',
       // redirectTo: 'http://localhost:4200/update-password',
-
     });
   }
   getSession() {
