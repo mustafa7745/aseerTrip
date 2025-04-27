@@ -20,6 +20,32 @@ export class AppComponent {
   constructor(private supabase: SupabaseService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
-    this.router.navigate(['/login']);
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      const params = new URLSearchParams(hash.replace('#', '?'));
+      const access_token = params.get('access_token');
+      const refresh_token = params.get('refresh_token');
+      const type = params.get('type'); // 👈 نحدد نوع العملية من الرابط
+
+      console.log({ access_token, refresh_token, type });
+
+      if (type === 'recovery' && access_token && refresh_token) {
+        // ✅ حالة استرجاع كلمة المرور
+        // سجل الدخول مؤقتًا
+        await this.supabase.supabase.auth.setSession({
+          access_token,
+          refresh_token,
+        });
+        this.router.navigate(['/update-password']);
+      } else if (type === 'signup') {
+        // ✅ حالة تأكيد الإيميل بعد التسجيل
+        // يمكن توجيه المستخدم إلى صفحة تسجيل الدخول أو إظهار رسالة
+        alert('✅ تم تأكيد بريدك الإلكتروني، يمكنك الآن تسجيل الدخول.');
+        this.router.navigate(['/login']);
+      } else {
+        // ❌ حالة غير معروفة
+        this.router.navigate(['/main']);
+      }
+    }
   }
 }

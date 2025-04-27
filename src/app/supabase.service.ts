@@ -50,7 +50,9 @@ export class SupabaseService {
   }
   async resetPassword(email: string) {
     return this.supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: 'http://localhost:4200/update-password',
+      redirectTo: 'https://aseer-trip.vercel.app/update-password',
+      // redirectTo: 'http://localhost:4200/update-password',
+
     });
   }
   getSession() {

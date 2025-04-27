@@ -19,6 +19,31 @@ export class UpdatePasswordComponent {
 
   constructor(private supabase: SupabaseService, private router: Router) {}
 
+  ngOnInit() {
+    if (typeof window !== 'undefined') {
+      // ✅ جلب التوكن من الرابط
+      const hash = window.location.hash;
+      const params = new URLSearchParams(hash.replace('#', '?'));
+      const access_token = params.get('access_token');
+      const refresh_token = params.get('refresh_token');
+      console.log(access_token);
+      // ✅ تسجيل الدخول مؤقتًا بالتوكن
+      if (access_token && refresh_token) {
+        this.supabase.supabase.auth
+          .setSession({
+            access_token,
+            refresh_token,
+          })
+          .then(({ error }) => {
+            if (error) {
+              this.errorMessage = 'فشل في إنشاء جلسة التحقق.';
+            }
+          });
+      } else {
+        this.errorMessage = 'رمز التحقق مفقود من الرابط.';
+      }
+    }
+  }
   async updatePassword() {
     this.loading = true;
     this.errorMessage = '';
