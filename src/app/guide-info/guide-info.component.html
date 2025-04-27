@@ -1,0 +1,29 @@
+<!-- القسم الثاني: travelGuider -->
+<div class="travel-guide travel-guider">
+    <img [src]="travelGuider.avatar" alt="صورة {{ travelGuider.name }}" class="avatar">
+    <h1>{{ travelGuider.name }}</h1>
+    <p><strong>اللغات:</strong> {{ travelGuider.languages.join('، ') }}</p>
+    <p><strong>التقييم:</strong> {{ travelGuider.rating }} / 5 ⭐</p>
+  </div>
+  
+  <!-- القسم الأول: travelGuideInfo -->
+  <div class="travel-guide travel-guide-info">
+    <h2>{{ travelGuideInfo.title }}</h2>
+    <p>{{ travelGuideInfo.description }}</p>
+  
+    <h3>المهام</h3>
+    <ul>
+      <li *ngFor="let task of travelGuideInfo.tasks">{{ task }}</li>
+    </ul>
+  
+    <h3>الرسالة</h3>
+    <p>{{ travelGuideInfo.mission }}</p>
+  
+    <h3>الخبرات</h3>
+    <p>{{ travelGuideInfo.experience }}</p>
+  </div>
+  
+  <hr>
+
+  <button class="btn btn-outline" >احجز الان</button>
+  

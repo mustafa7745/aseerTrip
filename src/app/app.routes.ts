@@ -3,11 +3,12 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { GuideInfoComponent } from './guide-info/guide-info.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegisterComponent },
   { path: 'main', component: MainComponent },
   { path: 'update-password', component: UpdatePasswordComponent },
-
+  { path: 'guide-info', component: GuideInfoComponent },
 ];

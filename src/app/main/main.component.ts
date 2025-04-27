@@ -34,7 +34,6 @@ export class MainComponent {
 
     const dates = await this.supabase.getDatesFromTable('guides');
     console.log(dates);
-    
 
     // .then(({ data:an }) => !!data.session?.user)
     // .catch(() => false);
@@ -52,6 +51,11 @@ export class MainComponent {
   //  constructor(private supabase: SupabaseService, private router: Router) {}
   goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  goToGuide(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.router.navigate(['/guide-info']);
   }
 
   goToSignUp() {

@@ -1,0 +1,94 @@
+/* التنسيق العام */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+  }
+  
+  /* تنسيق الأقسام */
+  .travel-guide {
+    direction: rtl;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 900px;
+  }
+  
+  /* تنسيق صورة السفر */
+  .travel-guide .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  /* تنسيق العناوين */
+  .travel-guide h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .travel-guide h2 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .travel-guide h3 {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+  }
+  
+  /* تنسيق الفقرات */
+  .travel-guide p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  /* تنسيق القائمة */
+  .travel-guide ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .travel-guide ul li {
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  /* التنسيق الخاص بالتقييم */
+  .travel-guide .rating {
+    display: flex;
+    align-items: center;
+  }
+  
+  .travel-guide .rating span {
+    font-size: 16px;
+    color: #FFD700;
+    margin-left: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+  }
