@@ -130,12 +130,12 @@ export class MainComponent {
 
   featuredGuides = [
     {
-      id: 1,
-      name:  'مهند سعيد',
+      id: 4,
+      name: 'ظافر الشهراني',
       avatar:
-        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/guider/mohaned.png',
-      languages: ['العربية', 'الإنجليزية'],
-      rating: 4.8,
+        'https://bypzmbcssqynwcwglaan.supabase.co/storage/v1/object/public/tours/guider/thafer.jpeg',
+      languages: ['العربية'],
+      rating: 5,
     },
     {
       id: 2,
