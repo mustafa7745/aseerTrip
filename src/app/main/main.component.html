@@ -33,13 +33,13 @@
           >
             تسجيل الدخول
           </button>
-          <!-- <button
+          <button
             (click)="goToSignUp()"
             class="btn btn-primary"
             style="margin: 5px"
           >
             إنشاء حساب
-          </button> -->
+          </button>
         </div>
         <div *ngIf="user">
           <!-- User icon with name -->
@@ -79,7 +79,54 @@
     <hr />
   </header>
 
- 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>استكشف جمال عسير</h1>
+      <p>منطقة تجمع بين روعة الطبيعة وأصالة التراث</p>
+      <!-- <button class="hero-button">ابدأ الرحلة</button> -->
+    </div>
+  </section>
+
+  <div class="tourism-guide">
+    <h1>مرحبًا بكم في الدليل الشامل للسياحة في عسير</h1>
+    <p>
+      اكتشفوا جمال عسير الساحر وتراثها الثقافي الغني، وهي جوهرة مخفية في قلب المملكة العربية السعودية. 
+      تقع عسير في المنطقة الجنوبية الغربية، وتقدم مزيجًا فريدًا من المناظر الطبيعية الخلابة والتقاليد 
+      النابضة بالحياة والضيافة الدافئة. من الجبال الشاهقة والوديان الخضراء إلى المدن التاريخية والأسواق 
+      النابضة، تعد هذه المنطقة جنة لعشاق الطبيعة والباحثين عن المغامرة.
+    </p>
+    <p>
+      تم تصميم موقعنا ليكون مصدرًا شاملاً لاستكشاف كل ما تقدمه عسير. سواء كنتم تبحثون عن أنشطة خارجية 
+      مثيرة، أو تجارب ثقافية مدهشة، أو عطلات هادئة، ستجدون كل ذلك هنا. انضموا إلينا ونحن نرشدكم عبر 
+      المشاهد والأصوات والنكهات الساحرة لعسير، لضمان أن تكون زيارتكم لا تُنسى. دعوا مغامرتكم تبدأ!
+    </p>
+  </div>
+  
+
+  <!-- Attractions Section -->
+  <section id="attractions" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>أبرز المعالم السياحية</h2>
+        <!-- <a href="/attractions" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a> -->
+      </div>
+      <div class="attractions-grid">
+        <div class="attraction-card" *ngFor="let attraction of topAttractions">
+          <img [src]="attraction.image" [alt]="attraction.name" />
+          <div class="attraction-overlay">
+            <h3>{{ attraction.name }}</h3>
+            <div class="rating">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+              <span>({{ attraction.reviews }})</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Guides Section -->
   <section id="guides" class="section bg-light">
