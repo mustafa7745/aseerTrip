@@ -14,6 +14,7 @@ import { Router } from 'express';
 })
 export class SupabaseService {
   supabase: SupabaseClient;
+  user: any;
 
   constructor() {
     this.supabase = createClient(environment.apiUrl, environment.apiKey, {
@@ -24,6 +25,13 @@ export class SupabaseService {
         detectSessionInUrl: false,
       },
     });
+    // this.loadUser()
+  }
+  async loadUser() {
+    const { data, error } = await this.supabase.auth.getSession();
+    console.log(data);
+
+    this.user = data.session?.user.email?.split('@')[0] || null;
   }
   private sessionSubject = new BehaviorSubject<AuthSession | null>(null);
 
@@ -51,6 +59,7 @@ export class SupabaseService {
       console.error('Logout error:', error.message);
       return false;
     } else {
+      this.user = null;
       console.log('Logged out successfully');
       return true;
     }

@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="showHeader">
+  <header class="header">
+    <!-- Paste your header HTML here (from main.component.html) -->
+    <!-- ...header content... -->
+  </header>
+</ng-container>
+<main>
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,189 @@
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>استكشف جمال عسير</h1>
+      <p>منطقة تجمع بين روعة الطبيعة وأصالة التراث</p>
+      <!-- <button class="hero-button">ابدأ الرحلة</button> -->
+    </div>
+  </section>
+
+  <div class="tourism-guide">
+    <h1>مرحبًا بكم في الدليل الشامل للسياحة في عسير</h1>
+    <p>
+      اكتشفوا جمال عسير الساحر وتراثها الثقافي الغني، وهي جوهرة مخفية في قلب المملكة العربية السعودية. 
+      تقع عسير في المنطقة الجنوبية الغربية، وتقدم مزيجًا فريدًا من المناظر الطبيعية الخلابة والتقاليد 
+      النابضة بالحياة والضيافة الدافئة. من الجبال الشاهقة والوديان الخضراء إلى المدن التاريخية والأسواق 
+      النابضة، تعد هذه المنطقة جنة لعشاق الطبيعة والباحثين عن المغامرة.
+    </p>
+    <p>
+      تم تصميم موقعنا ليكون مصدرًا شاملاً لاستكشاف كل ما تقدمه عسير. سواء كنتم تبحثون عن أنشطة خارجية 
+      مثيرة، أو تجارب ثقافية مدهشة، أو عطلات هادئة، ستجدون كل ذلك هنا. انضموا إلينا ونحن نرشدكم عبر 
+      المشاهد والأصوات والنكهات الساحرة لعسير، لضمان أن تكون زيارتكم لا تُنسى. دعوا مغامرتكم تبدأ!
+    </p>
+  </div>
+  
+
+  <!-- Attractions Section -->
+  <section id="attractions" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>أبرز المعالم السياحية</h2>
+        <!-- <a href="/attractions" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a> -->
+      </div>
+      <div class="attractions-grid">
+        <div class="attraction-card" *ngFor="let attraction of topAttractions">
+          <img [src]="attraction.image" [alt]="attraction.name" />
+          <div class="attraction-overlay">
+            <h3>{{ attraction.name }}</h3>
+            <div class="rating">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+              <span>({{ attraction.reviews }})</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guides Section -->
+  <section id="guides" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <h2>المرشدون السياحيون</h2>
+        <!-- <a href="/guides" class="view-all"
+        >عرض الكل <i class="fas fa-arrow-left"></i
+      ></a> -->
+      </div>
+      <div class="guides-list">
+        <div class="guide-card" *ngFor="let guide of featuredGuides">
+          <div class="guide-avatar">
+            <img [src]="guide.avatar" [alt]="guide.name" />
+          </div>
+          <div class="guide-info">
+            <h3>{{ guide.name }}</h3>
+            <div class="languages">
+              <span *ngFor="let lang of guide.languages">{{ lang }}</span>
+            </div>
+            <div class="rating">
+              <i class="fas fa-star" *ngFor="let star of [1, 2, 3, 4, 5]"></i>
+              <span>{{ guide.rating }}/5</span>
+            </div>
+          </div>
+          <button (click)="goToGuide(guide)" class="btn btn-outline">
+            احجز مرشدك
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips Section -->
+  <section id="tips" class="section transport-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>وسائل النقل المتاحة في عسير</h2>
+      </div>
+      <div class="transport-options">
+        <div class="transport-card" (click)="goToTransportation('rent-car')">
+          <h3>سيارات الأجرة</h3>
+          <p>
+            تتوفر سيارات الأجرة التقليدية في المدن الكبرى مثل أبها وخميس مشيط،
+            ويمكن طلبها عبر التطبيقات مثل كريم وأوبر.
+          </p>
+        </div>
+        <div class="transport-card" (click)="goToTransportation('bus')">
+          <h3>الحافلات</h3>
+          <p>
+            توجد خدمات الحافلات العامة التي تربط بين المدن والقرى، وهي وسيلة
+            اقتصادية للتنقل.
+          </p>
+        </div>
+        <div class="transport-card" (click)="goToTransportation('car')">
+          <h3>السيارات الخاصة</h3>
+          <p>
+            يمكنك استئجار سيارة من خلال الشركات المحلية أو الدولية، وتُعتبر
+            مثالية لاستكشاف المناطق الجبلية.
+          </p>
+        </div>
+        <div class="transport-card" (click)="goToTransportation('plain')">
+          <h3>النقل الجوي الداخلي</h3>
+          <p>
+            يوجد مطار أبها الإقليمي الذي يربط المنطقة بالمدن السعودية الكبرى،
+            ويُعد خيارًا سريعًا للتنقل بين المناطق.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Travel Tips Section -->
+  <section id="tips" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>نصائح السفر</h2>
+        <!-- <a href="/tips" class="view-all"
+          >عرض الكل <i class="fas fa-arrow-left"></i
+        ></a> -->
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card" *ngFor="let tip of travelTips">
+          <div class="tip-icon">
+            <i [class]="'fas ' + tip.icon"></i>
+          </div>
+          <h3>{{ tip.title }}</h3>
+          <p>{{ tip.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>اشترك في نشرتنا البريدية</h2>
+      <p>احصل على آخر العروض والفعاليات مباشرة إلى بريدك</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="بريدك الإلكتروني" />
+        <button class="btn btn-primary">اشتراك</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>اكتشف عسير</h3>
+          <p>منصة سياحية متكاملة تقدم أفضل التجارب في منطقة عسير</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#">الرئيسية</a></li>
+            <li><a href="#">عن عسير</a></li>
+            <!-- <li><a href="#">الرحلات</a></li>
+            <li><a href="#">الفعاليات</a></li> -->
+            <li><a href="#">اتصل بنا</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>تواصل معنا</h4>
+          <p><i class="fas fa-map-marker-alt"></i> أبها، منطقة عسير</p>
+          <p><i class="fas fa-phone"></i> +966 12 345 6789</p>
+          <p><i class="fas fa-envelope"></i> infodiscoverasir.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2023 اكتشف عسير. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>

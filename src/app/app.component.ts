@@ -16,8 +16,14 @@ export class AppComponent {
   password: string = '';
   loading: boolean = false;
   errorMessage: string = '';
+  showHeader: boolean = true;
 
-  constructor(private supabase: SupabaseService, private router: Router) {}
+  constructor(private supabase: SupabaseService, private router: Router) {
+    // Listen to route changes
+    this.router.events.subscribe(() => {
+      this.showHeader = this.router.url !== '/login';
+    });
+  }
 
   async ngOnInit(): Promise<void> {
     if (typeof window !== 'undefined') {
@@ -44,7 +50,7 @@ export class AppComponent {
         this.router.navigate(['/login']);
       } else {
         // ❌ حالة غير معروفة
-        this.router.navigate(['/main']);
+        this.router.navigate(['/home']);
       }
     }
   }

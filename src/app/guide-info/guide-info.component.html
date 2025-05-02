@@ -38,7 +38,14 @@
     </ul>
   
     <!-- زر الحجز -->
-    <button class="btn btn-outline">احجز الآن</button>
+    <!-- <button class="btn btn-outline">احجز الآن</button> -->
+
+    <button class="btn btn-outline" (click)="book()" *ngIf="user">
+      احجز الآن
+    </button>
+    <button class="btn btn-outline" (click)="book()" *ngIf="!user">
+      سجل الدخول للحجز
+    </button>
   </div>
   
   <hr>

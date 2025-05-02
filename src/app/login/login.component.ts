@@ -16,7 +16,7 @@ export class LoginComponent {
     this.router.navigate(['/signup']);
   }
   goToMain() {
-    this.router.navigate(['/main']);
+    this.router.navigate(['/home']);
   }
   email: string = '';
   password: string = '';
@@ -26,7 +26,7 @@ export class LoginComponent {
   constructor(private supabase: SupabaseService, private router: Router) {}
   async ngOnInit(): Promise<void> {
     if (await this.supabase.hasSession()) {
-      this.router.navigate(['/main']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -45,7 +45,7 @@ export class LoginComponent {
       }
       if (data.user) {
         console.log('done', data);
-        this.router.navigate(['/main']);
+        this.router.navigate(['/home']);
       }
     } catch (err) {
       this.errorMessage = 'An unexpected error occurred';

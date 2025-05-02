@@ -1,0 +1,28 @@
+<div class="vehicle-page" *ngIf="['car', 'rent-car', 'bus', 'plain'].includes(type)">
+    <h2 class="title">🚗 {{ getTitle(type) }}</h2>
+  
+    <div class="car-grid">
+      <div class="car-card" *ngFor="let vehicle of data">
+        <img [src]="vehicle.image" class="car-image" alt="صورة {{ vehicle.name }}" />
+  
+        <div class="car-details">
+          <h3 class="car-name">{{ vehicle.name }}</h3>
+  
+          <div class="features">
+            <span *ngFor="let feature of vehicle.features">✅ {{ feature }}</span>
+          </div>
+  
+          <div class="rating">⭐ {{ vehicle.rating }} / 5</div>
+          <div class="price">💰 السعر: {{ vehicle.price | number }} ر.س / {{ getPriceUnit(type) }}</div>
+  
+          <button class="book-btn" (click)="book(vehicle.name)" *ngIf="user">
+            احجز الآن
+          </button>
+          <button class="book-btn" (click)="book(vehicle.name)" *ngIf="!user">
+            سجل الدخول للحجز
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { SupabaseService } from '../supabase.service';
 
 @Component({
   selector: 'app-guide-info',
@@ -9,6 +10,9 @@ import { Component } from '@angular/core';
   styleUrl: './guide-info.component.css',
 })
 export class GuideInfoComponent {
+  constructor(private supabase: SupabaseService) {}
+  user: any;
+
   async ngOnInit(): Promise<void> {
     if (typeof window !== 'undefined') {
       this.travelGuider = JSON.parse(localStorage.getItem('user')!!);
@@ -16,6 +20,7 @@ export class GuideInfoComponent {
         (data) => data.travelGuiderId == this.travelGuider.id
       )!!;
     }
+    this.user = this.supabase.user;
   }
   travelGuideList = [
     {
@@ -107,8 +112,7 @@ export class GuideInfoComponent {
         instagram: 'https://instagram.com/saad_aseer_guide',
         whatsapp: 'https://wa.me/966543217890',
       },
-    }
-    
+    },
   ];
 
   travelGuideInfo = {
@@ -142,4 +146,12 @@ export class GuideInfoComponent {
     languages: ['العربية', 'الإنجليزية'],
     rating: 4.8,
   };
+
+  book() {
+    if (!this.user) {
+      alert('يرجى تسجيل الدخول أولاً!');
+      return;
+    }
+    alert(`تم حجز: ${this.travelGuider.name}`);
+  }
 }
