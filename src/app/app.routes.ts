@@ -6,6 +6,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { GuideInfoComponent } from './guide-info/guide-info.component';
 import { HomeComponent } from './home/home.component';
 import { TransportationComponent } from './transportation/transportation.component';
+import { EventsComponent } from './events/events.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,6 +20,8 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'guide-info', component: GuideInfoComponent },
       { path: 'transport-info', component: TransportationComponent },
+      { path: 'event-info', component: EventsComponent },
+
 
     ],
   },

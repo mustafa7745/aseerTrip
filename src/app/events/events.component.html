@@ -1,0 +1,35 @@
+<section class="event-details-modern">
+  <div class="event-banner">
+    <img [src]="event.image" alt="{{ event.name }}" />
+    <div class="overlay">
+      <h1>{{ event.name }}</h1>
+      <p class="category-tag">{{ event.category }}</p>
+    </div>
+  </div>
+
+  <div class="event-content container">
+    <div class="event-meta">
+      <div class="meta-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span
+          >{{ event.date | date : "fullDate" }} -
+          {{ event.date | date : "shortTime" }}</span
+        >
+      </div>
+      <div class="meta-item">
+        <i class="fas fa-tag"></i>
+        <span>{{ event.category }}</span>
+      </div>
+      <div class="meta-item">
+        <i class="fas fa-money-bill-wave"></i>
+        <span>{{ event.price }} ر.س</span>
+      </div>
+    </div>
+
+    <p class="event-description">
+      {{ event.description }}
+    </p>
+
+    <button class="btn-register" (click)="book()">احجز الآن</button>
+  </div>
+</section>
