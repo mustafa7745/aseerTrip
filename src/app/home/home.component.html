@@ -48,32 +48,6 @@
   </div>
 </section>
 
-<section id="event-section" class="section bg-light">
-  <div class="container">
-    <div class="section-header">
-      <h2>كل الفعاليات</h2>
-    </div>
-
-    <div class="horizontal-scroll-wrapper">
-      <div
-        (click)="goToEvents(event)"
-        class="event-card"
-        *ngFor="let event of upcomingEvents"
-      >
-        <div class="event-category">{{ event.category }}</div>
-        <img [src]="event.image" [alt]="event.name" class="event-img" />
-        <div class="event-details">
-          <h4>{{ event.name }}</h4>
-          <!-- <p>{{ event.category }}</p> -->
-          <div class="event-date">
-            {{ event.date | date : "dd MMM yyyy mm:hh" }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Guides Section -->
 <section id="guides" class="section bg-light">
   <div class="container">
@@ -101,6 +75,32 @@
         <button (click)="goToGuide(guide)" class="btn btn-outline">
           احجز مرشدك
         </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="event-section" class="section bg-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>كل الفعاليات</h2>
+    </div>
+
+    <div class="horizontal-scroll-wrapper">
+      <div
+        (click)="goToEvents(event)"
+        class="event-card"
+        *ngFor="let event of upcomingEvents"
+      >
+        <div class="event-category">{{ event.category }}</div>
+        <img [src]="event.image" [alt]="event.name" class="event-img" />
+        <div class="event-details">
+          <h4>{{ event.name }}</h4>
+          <!-- <p>{{ event.category }}</p> -->
+          <div class="event-date">
+            {{ event.date | date : "dd MMM yyyy mm:hh" }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
