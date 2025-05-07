@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SupabaseService } from '../supabase.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,12 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  constructor(private router: Router) {}
+  // constructor() {}
+  user: any;
+  async ngOnInit(): Promise<void> {
+    this.user = this.supabase.user;
+  }
+  constructor(private router: Router, private supabase: SupabaseService) {}
   goToGuide(user: any) {
     localStorage.setItem('user', JSON.stringify(user));
     this.router.navigate(['/guide-info']);
@@ -92,4 +98,44 @@ export class HomeComponent {
       description: 'تأجير سيارة هو الخيار الأمثل للتنقل',
     },
   ];
+  upcomingEvents = [
+    {
+      id: 1,
+      name: 'فعاليات الصيف',
+      data: [
+        [
+          {
+            title: 'مهرجان الصيف في عسير',
+            date: new Date('2023-07-15'),
+            description: 'احتفالية سنوية تضم عروضاً تراثية وفنية',
+            location: 'منتزه السودة',
+            price: 130,
+          },
+        ],
+      ],
+    },
+
+    {
+      id: 2,
+      name: 'فعاليات التمور',
+      data: [
+        [
+          {
+            title: 'سوق عسير للتمور',
+            date: new Date('2023-08-20'),
+            description: 'أجود أنواع التمور والعسل الجبلي',
+            location: 'أبها',
+            price: 150,
+          },
+        ],
+      ],
+    },
+  ];
+  book() {
+    if (!this.user) {
+      alert('يرجى تسجيل الدخول أولاً!');
+      return;
+    }
+    alert(`تم الحجز`);
+  }
 }
